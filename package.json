@@ -1,0 +1,26 @@
+{
+  "name": "try-microsoft-fast",
+  "version": "0.0.1",
+  "description": "Hand Dirty with Microsoft Fast to be more familiar with their idea and design system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjavadhpour/try-microsoft-fast.git"
+  },
+  "keywords": [
+    "fast",
+    "microsoft",
+    "javascript",
+    "npm",
+    "node.js"
+  ],
+  "author": "Mohammad Javad Hosein Pour",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mjavadhpour/try-microsoft-fast/issues"
+  },
+  "homepage": "https://github.com/mjavadhpour/try-microsoft-fast#readme"
+}
