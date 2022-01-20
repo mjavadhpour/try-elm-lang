@@ -13,6 +13,8 @@
 		"editor.formatOnType": true,
 		"files.insertFinalNewline": true,
 		"files.trimFinalNewlines": true,
+		"editor.tabSize": 4,
+		"editor.insertSpaces": true,
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
