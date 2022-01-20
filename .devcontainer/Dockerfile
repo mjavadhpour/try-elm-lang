@@ -1,16 +1,30 @@
-# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.205.2/containers/javascript-node/.devcontainer/base.Dockerfile
+FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-12-buster
 
-# [Choice] Node.js version (use -bullseye variants on local arm64/Apple Silicon): 16, 14, 12, 16-bullseye, 14-bullseye, 12-bullseye, 16-buster, 14-buster, 12-buster
-ARG VARIANT="16-bullseye"
-FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
+# Configuring Elm version
+ARG ELM_VERSION=latest-0.19.1
+ARG ELM_TEST_VERSION=latest-0.19.1
+ARG ELM_FORMAT_VERSION=latest-0.19.1
 
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+# This Dockerfile adds a non-root user with sudo access. Update the “remoteUser” property in
+# devcontainer.json to use it. More info: https://aka.ms/vscode-remote/containers/non-root-user.
+ARG USERNAME=node
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
 
-# [Optional] Uncomment if you want to install an additional version of node using nvm
-# ARG EXTRA_NODE_VERSION=10
-# RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
-
-# [Optional] Uncomment if you want to install more global node modules
-# RUN su node -c "npm install -g <your-package-list-here>"
+# Install elm, elm-test and elm-format
+RUN export DEBIAN_FRONTEND=noninteractive \
+    && sudo -u ${USERNAME} npm install --global \
+    elm@${ELM_VERSION} \
+    elm-test@${ELM_TEST_VERSION} \
+    elm-format@${ELM_FORMAT_VERSION} \
+    #
+    # [Optional] Update UID/GID if needed
+    && if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
+        groupmod --gid $USER_GID $USERNAME \
+        && usermod --uid $USER_UID --gid $USER_GID $USERNAME \
+        && chown -R $USER_UID:$USER_GID /home/$USERNAME; \
+    fi \
+    # Create the elm cache directory where we can mount a volume. If we don't create it like this
+    # it is auto created by docker on volume creation but with root as owner which makes it unusable.
+    && mkdir /home/$USERNAME/.elm \
+    && chown $USERNAME:$USERNAME /home/$USERNAME/.elm
