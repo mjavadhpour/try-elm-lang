@@ -159,6 +159,16 @@ list =
     Node 1 Empty |> Node 12 |> Node 15 |> Node 21 |> Node 33
 
 
+sum : MyList Int -> Int
+sum myList =
+    case myList of
+        Empty ->
+            0
+
+        Node intValue remainingNodes ->
+            intValue + sum remainingNodes
+
+
 main : Html.Html msg
 main =
     "low"
