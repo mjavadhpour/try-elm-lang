@@ -149,6 +149,16 @@ signUp email ageStr =
                 Err Normal
 
 
+type MyList a
+    = Empty
+    | Node a (MyList a)
+
+
+list : MyList number
+list =
+    Node 1 Empty |> Node 12 |> Node 15 |> Node 21 |> Node 33
+
+
 main : Html.Html msg
 main =
     "low"
