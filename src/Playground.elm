@@ -95,6 +95,60 @@ hashtag dayInNumber =
             "#Whatever"
 
 
+type Greeting a
+    = Howdy
+    | Hola
+    | Namaste a
+    | NumericalHi Int Int
+
+
+sayHello : Greeting a -> String
+sayHello message =
+    case message of
+        Howdy ->
+            ""
+
+        Hola ->
+            ""
+
+        Namaste _ ->
+            ""
+
+        NumericalHi _ _ ->
+            ""
+
+
+type Error
+    = Critical
+    | Normal
+
+
+type Result error value
+    = Ok value
+    | Err error
+
+
+signUp : String -> String -> Result Error String
+signUp email ageStr =
+    case String.toInt ageStr of
+        Nothing ->
+            Err Critical
+
+        Just age ->
+            let
+                isValidEmail =
+                    False
+            in
+            if age < 13 then
+                Err Normal
+
+            else if isValidEmail then
+                Ok "Your account has been created successfully!"
+
+            else
+                Err Normal
+
+
 main : Html.Html msg
 main =
     "low"
