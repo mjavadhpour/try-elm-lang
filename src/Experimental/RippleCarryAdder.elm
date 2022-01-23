@@ -1,4 +1,4 @@
-module Experimenal.RippleCarryAdder exposing (..)
+module Experimental.RippleCarryAdder exposing (..)
 
 import Bitwise
 
