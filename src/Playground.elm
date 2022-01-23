@@ -169,6 +169,43 @@ sum myList =
             intValue + sum remainingNodes
 
 
+type Tree a
+    = EmptyArrow
+    | Leaf a (Tree a) (Tree a)
+
+
+
+{--
+The tree will be represented as bellow:
+                 1
+                / \
+               2   3
+              /\   /\
+             4  5 6  7
+              \     /
+               8   9
+--}
+
+
+myTree : Tree number
+myTree =
+    Leaf 1
+        (Leaf 2
+            (Leaf 4
+                EmptyArrow
+                (Leaf 8 EmptyArrow EmptyArrow)
+            )
+            (Leaf 5 EmptyArrow EmptyArrow)
+        )
+        (Leaf 3
+            (Leaf 6 EmptyArrow EmptyArrow)
+            (Leaf 7
+                (Leaf 9 EmptyArrow EmptyArrow)
+                EmptyArrow
+            )
+        )
+
+
 main : Html.Html msg
 main =
     "low"
