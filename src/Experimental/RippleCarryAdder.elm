@@ -58,7 +58,16 @@ type alias Binary =
     }
 
 
-rippleCarryAdder : Binary -> Binary -> Int -> { carry : Int, sum0 : Int, sum1 : Int, sum2 : Int, sum3 : Int }
+type alias BinarySum =
+    { carry : Int
+    , sum0 : Int
+    , sum1 : Int
+    , sum2 : Int
+    , sum3 : Int
+    }
+
+
+rippleCarryAdder : Binary -> Binary -> Int -> BinarySum
 rippleCarryAdder a b carryIn =
     let
         firstResult =
@@ -73,9 +82,8 @@ rippleCarryAdder a b carryIn =
         finalResult =
             fullAdder a.d0 b.d0 thirdResult.carry
     in
-    { carry = finalResult.carry
-    , sum0 = finalResult.sum
-    , sum1 = thirdResult.sum
-    , sum2 = secondResult.sum
-    , sum3 = firstResult.sum
-    }
+    BinarySum finalResult.carry
+        finalResult.sum
+        thirdResult.sum
+        secondResult.sum
+        firstResult.sum
