@@ -1,7 +1,7 @@
 {
-  "name": "try-microsoft-fast",
+  "name": "try-elm-lang",
   "version": "0.0.1",
-  "description": "Hand Dirty with Microsoft Fast to be more familiar with their idea and design system",
+  "description": "Experimental working with Elm Lang to be more familiar with it.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,16 +11,15 @@
     "url": "git+https://github.com/mjavadhpour/try-microsoft-fast.git"
   },
   "keywords": [
-    "fast",
-    "microsoft",
+    "functional",
+    "elm-lang",
     "javascript",
-    "npm",
-    "node.js"
+    "npm"
   ],
   "author": "Mohammad Javad Hosein Pour",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mjavadhpour/try-microsoft-fast/issues"
+    "url": "https://github.com/mjavadhpour/try-elm-lang/issues"
   },
-  "homepage": "https://github.com/mjavadhpour/try-microsoft-fast#readme"
+  "homepage": "https://github.com/mjavadhpour/try-elm-lang#readme"
 }
